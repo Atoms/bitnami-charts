@@ -147,4 +147,17 @@ rules:
     verbs:
       - update
   {{- end }}
+  {{- if has "traefik-proxy" .Values.sources }}
+  - apiGroups: 
+      - traefik.containo.us
+      - traefik.io
+    resources: 
+      - ingressroutes
+      - ingressroutetcps
+      - ingressrouteudps
+    verbs: 
+      - get
+      - watch
+      - list
+  {{- end }}
 {{- end }}
